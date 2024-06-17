@@ -10,7 +10,7 @@ public class Recursion {
         if (n == 1) {  // 첫 항을 설정해 준다.
             return 3;
 
-        } else {        // 첫 항이 1이고, 등차가 diffennce일때 n번째 항을 구한다.
+        } else {        // 첫 항이 3이고, 등차가 diffennce일때 n번째 항을 구한다.
             return arithmeticSequence(n - 1, difference) + difference;
         }
 
@@ -33,24 +33,55 @@ public class Recursion {
         }
     }
 
-    public static void hanoiTower(int n, char f, char t, char a) {
-
-
-        // f 시작지, t 목적지, a 경유지
-        // base case
+    public static void hanoiTower(int n, char from, char to, char aux) {
         if (n == 1) {
-            System.out.println("Move dist 1 from rod" + f + "to rod" + t);
+            System.out.println("Disk 1 from " + from + " to " + to);
+        } else {
+            // Step 1: Move n-1 disks from start to auxiliary, so they are out of the way
+            hanoiTower(n - 1, from, aux, to);
+
+            // Step 2: Move the nth disk from start to target
+            System.out.println("Disk " + n + " from " + from + " to " + to);
+
+            // Step 3: Move the n-1 disks that we left on auxiliary to target
+            hanoiTower(n - 1, aux, to, from);
         }
-
-        // recursive case
-        // 첫 번째로는 n-1개를 경유지로 옮기고
-        hanoiTower(n-1, f, a, t);
-
-        // 가장 큰 디스크를 시작지에서 목적지로 옮긴다.
-        System.out.println("Move disk " + n + " from rod " + f + " to rod" + t);
-
-        // n-1 개의 디스크를 경유지에서 목적지로 옮긴다.
-        hanoiTower(n - 1, a, t, f);
     }
 
+    // 선택정렬 메소드
+    // 선택정렬이란
+    public static void selectionSort(int[] arr) {
+        int n = arr.length;
+        // 배열의 끝까지 반복
+        for (int i = 0; i < n - 1; i++) {
+            // i 번째 위치에 들어갈 최소 원소의 위치를 찾는다.
+            int minIndex = i;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            // 최소 원소를 i 번째 위치로 옮긴다.
+            int temp = arr[minIndex];
+            arr[minIndex] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+    public static void selectionSrot(int[] arr) {
+        int n = arr.length;         // 배열의 길이이다.
+
+        for (int i = 0; i < n - 1; i++) {
+            // i번 째 위치에 들어갈 최소 원소의 위치를 찾는다.
+            int minIndex = i;
+
+
+
+        }
+
+        // 최소 원소를 i 번재 위치로 옮기는 것이다.
+        int temp = arr[minIndex]; // 최소 원소를 i 번째 위치로 옮긴다.
+        arr[minIndex] = arr[i];
+        arr[int] = temp;
+    }
 }
