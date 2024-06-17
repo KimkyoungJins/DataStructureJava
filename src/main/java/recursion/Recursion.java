@@ -29,19 +29,28 @@ public class Recursion {
             return 1;
 
         } else {
-            return fibonacci(n - 1) + fibonacci(n - 2 );
+            return fibonacci(n - 1) + fibonacci(n - 2);
         }
     }
 
-    // 하노이 타워
-    public int hanoitower(int n, char formRod, char toRod, char endRod) {
+    public static void hanoiTower(int n, char f, char t, char a) {
 
+
+        // f 시작지, t 목적지, a 경유지
+        // base case
         if (n == 1) {
-            System.out.println("Only on disk is meaningless");
+            System.out.println("Move dist 1 from rod" + f + "to rod" + t);
         }
 
-        
+        // recursive case
+        // 첫 번째로는 n-1개를 경유지로 옮기고
+        hanoiTower(n-1, f, a, t);
 
+        // 가장 큰 디스크를 시작지에서 목적지로 옮긴다.
+        System.out.println("Move disk " + n + " from rod " + f + " to rod" + t);
+
+        // n-1 개의 디스크를 경유지에서 목적지로 옮긴다.
+        hanoiTower(n - 1, a, t, f);
     }
 
 }
