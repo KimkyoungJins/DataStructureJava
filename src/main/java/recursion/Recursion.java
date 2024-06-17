@@ -49,28 +49,32 @@ public class Recursion {
     }
 
 
-    // 선택정렬 메소드
-    public static void selectionSort(int[] arr) {
+    /**
+     * 선택정렬 메소드란?
+     * 배열을 돌면서, 가장 크거나, 가장 작은 수를 캐치해서
+     * 순서대로 정렬 시키는 방법을 말한다.
+     */
 
-        int n = arr.length;         // 배열의 크기이다.
+    public static void selectionSorting(int[] arr) {
+        // 배열의 길이를 찾아야 함.
+        int n = arr.length;
 
-        for (int i = 0; i < n - 1; i++) {
+        // 반복문 2개 돌려야 함
+        for (int i = 0; i < n - 1; i++) {       // 어차피 마지막은 알아서 정렬되기 때문
 
-            // 초기값 잡아준다.
-            int minIndex = i;
+            // 초기화 해야함
+            int minIndex = i;       // 가장 작은 수의 인덱스이다.
 
-            for (int j = i + 1; j < n; j++) {
-                if(arr[j] < arr[minIndex]){
+            for (int j = i + 1; j < n; j++) {   // 첫 번째 인덱스 할당 했으면 다음 인덱스도 해야하기 때문이다.
+                if (arr[j] < arr[minIndex]) {
                     minIndex = j;
                 }
             }
-
-            // 배열의 첫 번재 원소와 가장 작은 원소의 위치를 바꾸어 준다.
+            // 그리고 나서 할당해야함.
             int temp = arr[i];
             arr[i] = arr[minIndex];
             arr[minIndex] = temp;
         }
-
     }
 
 }
